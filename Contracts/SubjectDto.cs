@@ -18,10 +18,10 @@ public record SubjectDto : SubjectListItemDto
 			RuleFor(x => x.CategoryId).NotEmpty().WithName("Kategorie");
 			RuleFor(x => x.ScheduleDayOfWeek).NotEmpty().WithName("Den");
 			RuleFor(x => x.ScheduleSlotInDay).NotEmpty().WithName("Čas");
-			RuleFor(x => x.HoursPerWeek).Must(BeMoreThanZero).WithName("Počet hodin týdně");
+			RuleFor(x => x.HoursPerWeek).Must(BeCorrectNumber).WithName("Počet hodin týdně");
 		}
 
-		private bool BeMoreThanZero(int arg)
+		private bool BeCorrectNumber(int arg)
 		{
 			return (arg > 0 && arg <= 4);
 		}
